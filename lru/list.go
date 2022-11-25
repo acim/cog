@@ -28,7 +28,7 @@ func (l *list[K, V]) remove(e *el[K, V]) {
 }
 
 func (l *list[K, V]) prepend(k K, v V) *el[K, V] {
-	e := &el[K, V]{value: v, key: k}
+	e := &el[K, V]{key: k, value: v}
 	e.prev = &l.root
 	e.next = l.root.next
 	e.prev.next = e
