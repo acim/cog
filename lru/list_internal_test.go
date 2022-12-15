@@ -10,7 +10,7 @@ func TestRemove(t *testing.T) {
 	l := newList[string, string]()
 	el := l.prepend("foo", "bar")
 
-	if el.key != "foo" || el.value != "bar" {
+	if el.key != "foo" || el.value != "bar" { //nolint:goconst
 		t.Fatal("key and value doesn't match")
 	}
 

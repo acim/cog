@@ -8,7 +8,6 @@ lint:
 		--disable golint \
 		--disable ifshort \
 		--disable interfacer \
-		--disable ireturn \
 		--disable maligned \
 		--disable nosnakecase \
 		--disable scopelint \

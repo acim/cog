@@ -42,7 +42,7 @@ func (c *Cache[K, V]) Set(key K, value V) {
 	c.mu.Unlock()
 }
 
-func (c *Cache[K, V]) Get(key K) (V, bool) {
+func (c *Cache[K, V]) Get(key K) (V, bool) { //nolint:ireturn
 	c.mu.RLock()
 
 	if el, ok := c.inner[key]; ok {
