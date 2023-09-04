@@ -12,7 +12,7 @@ type list[K comparable, V any] struct {
 }
 
 func newList[K comparable, V any]() *list[K, V] {
-	l := &list[K, V]{size: 0}
+	l := &list[K, V]{size: 0} //nolint:exhaustruct
 	l.root.next = &l.root
 	l.root.prev = &l.root
 
@@ -28,7 +28,7 @@ func (l *list[K, V]) remove(e *el[K, V]) {
 }
 
 func (l *list[K, V]) prepend(k K, v V) *el[K, V] {
-	e := &el[K, V]{key: k, value: v}
+	e := &el[K, V]{key: k, value: v} //nolint:exhaustruct
 	e.prev = &l.root
 	e.next = l.root.next
 	e.prev.next = e

@@ -102,6 +102,33 @@ func TestSet_SameKey(t *testing.T) {
 	}
 }
 
+func TestDel(t *testing.T) {
+	t.Parallel()
+
+	type value struct {
+		v string
+	}
+
+	cache := lru.NewCache[string, *value](3)
+
+	cache.Set("foo", &value{v: "foo"})
+	cache.Set("bar", &value{v: "bar"})
+	cache.Set("baz", &value{v: "baz"})
+	cache.Del("bar")
+
+	if _, ok := cache.Get("foo"); !ok {
+		t.Error(`Get("foo") = nok; want ok`)
+	}
+
+	if _, ok := cache.Get("bar"); ok {
+		t.Error(`Get("bar") = ok; want nok`)
+	}
+
+	if _, ok := cache.Get("baz"); !ok {
+		t.Error(`Get("baz") = nok; want ok`)
+	}
+}
+
 func BenchmarkCache_Set(b *testing.B) {
 	b.ReportAllocs()
 

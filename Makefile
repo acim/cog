@@ -1,7 +1,7 @@
 .PHONY: lint test test-bench test-cov
 
 lint:
-	@golangci-lint run \
+	@golangci-lint run --fix\
 		--enable-all \
 		--disable deadcode \
 		--disable exhaustivestruct \
